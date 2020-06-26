@@ -1,2 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_vessel_management_system_vessel_management_system,vessel_management_system.vessel_management_system,model_vessel_management_system_vessel_management_system,,1,0,0,0
+access_vessel_management,vessel_management_system,model_vessel_vessel,,1,1,1,1
+access_vessel_programme,vessel_programme,model_vessel_programme,,1,1,1,1
+access_vessel_product,vessel_product,model_product_vessel,,1,1,1,1

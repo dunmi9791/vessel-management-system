@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+<record id="increment_programme_id_sequence" model="ir.sequence">
+    <field name="name">Programme ID Incrementation</field>
+    <field name="code">increment_programme_id</field>
+    <field name="prefix">Programme ID  </field>
+    <field name="padding">4</field>
+    <field name="company_id" eval="False"/>
+</record>
+    </data>
+</odoo>
