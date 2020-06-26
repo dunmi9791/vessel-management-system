@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <menuitem name="Voyage Management System" id="vessel_root_menu" web_icon="vessel_management_system,static/src/img/icon.png"/>
+
+
+        <record id="vessel_programme_action" model="ir.actions.act_window">
+            <field name="name">Vessel Program Information</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">vessel.programme</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                <!-- Add Text Here -->
+              </p><p>
+                <!-- More details about what a user can do with this object will be OK -->
+              </p>
+            </field>
+        </record>
+        <record id="vessel_action" model="ir.actions.act_window">
+            <field name="name">vessel Information</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">vessel.vessel</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                <!-- Add Text Here -->
+              </p><p>
+                <!-- More details about what a user can do with this object will be OK -->
+              </p>
+            </field>
+        </record>
+        <record id="product_action" model="ir.actions.act_window">
+            <field name="name">Products</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.vessel</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                <!-- Add Text Here -->
+              </p><p>
+                <!-- More details about what a user can do with this object will be OK -->
+              </p>
+            </field>
+        </record>
+
+        <menuitem name="Programme Information " id="vessel_programme_menu" parent="vessel_root_menu"
+              sequence="2" action="vessel_programme_action"/>
+        <menuitem name="Vessels" id="vessel__menu" parent="vessel_root_menu"
+              sequence="3" action="vessel_action" />
+        <menuitem name="Configuration" id="configuration_menu" parent="vessel_root_menu"
+              sequence="4"  />
+        <menuitem name="Products" id="products__menu" parent="configuration_menu"
+              sequence="5" action="product_action" />
+
+    </data>
+</odoo>

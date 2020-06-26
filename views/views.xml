@@ -1,60 +1,146 @@
 <odoo>
   <data>
-    <!-- explicit list view definition -->
-    <!--
-    <record model="ir.ui.view" id="vessel_management_system.list">
-      <field name="name">vessel_management_system list</field>
-      <field name="model">vessel_management_system.vessel_management_system</field>
-      <field name="arch" type="xml">
-        <tree>
-          <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
-        </tree>
-      </field>
-    </record>
-    -->
+      <record id="vessel_form_view" model="ir.ui.view">
+          <field name="name">vessel.form.view</field>
+          <field name="model">vessel.vessel</field>
+          <field name="arch" type="xml">
+              <form string="">
+                  <sheet>
+                      <group>
+                          <group>
+                              <field name="name"/>
+                              <field name="type"/>
+                          </group>
+                      </group>
+                      <notebook>
+                      <page string="Vessel Programme Information">
+                          <field name="prog_info_ids"/>
 
-    <!-- actions opening views on models -->
-    <!--
-    <record model="ir.actions.act_window" id="vessel_management_system.action_window">
-      <field name="name">vessel_management_system window</field>
-      <field name="res_model">vessel_management_system.vessel_management_system</field>
-      <field name="view_mode">tree,form</field>
-    </record>
-    -->
+                      </page>
+                  </notebook>
+                  </sheet>
 
-    <!-- server action to the one above -->
-    <!--
-    <record model="ir.actions.server" id="vessel_management_system.action_server">
-      <field name="name">vessel_management_system server</field>
-      <field name="model_id" ref="model_vessel_management_system_vessel_management_system"/>
-      <field name="state">code</field>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "tree,form",
-          "res_model": self._name,
-        }
-      </field>
-    </record>
-    -->
+              </form>
+          </field>
+      </record>
+      <record id="program_information_tree" model="ir.ui.view">
+          <field name="name">program.information.tree</field>
+          <field name="model">vessel.programme</field>
+          <field name="arch" type="xml">
+              <tree string="Vessel Programme Information">
+                  <field name="programme_id"/>
+                  <field name="daughter_id"/>
+                  <field name="date"/>
+                  <field name="product_id"/>
+                  <field name="arrive_lag_anchor"/>
+              </tree>
+          </field>
+      </record>
+      <record id="programme_information_form" model="ir.ui.view">
+          <field name="name">programme.information.form</field>
+          <field name="model">vessel.programme</field>
+          <field name="arch" type="xml">
+              <form string="Programme Information">
+                  <header>
 
-    <!-- Top menu item -->
-    <!--
-    <menuitem name="vessel_management_system" id="vessel_management_system.menu_root"/>
-    -->
-    <!-- menu categories -->
-    <!--
-    <menuitem name="Menu 1" id="vessel_management_system.menu_1" parent="vessel_management_system.menu_root"/>
-    <menuitem name="Menu 2" id="vessel_management_system.menu_2" parent="vessel_management_system.menu_root"/>
-    -->
-    <!-- actions -->
-    <!--
-    <menuitem name="List" id="vessel_management_system.menu_1_list" parent="vessel_management_system.menu_1"
-              action="vessel_management_system.action_window"/>
-    <menuitem name="Server to list" id="vessel_management_system" parent="vessel_management_system.menu_2"
-              action="vessel_management_system.action_server"/>
-    -->
+                      <field name="armed_clear_status" widget="statusbar" statusbar_visible="active,expired"/>
+                  </header>
+                  <sheet>
+                      <group>
+                          <field name="programme_id"/>
+                      </group>
+                      <group>
+
+                      </group>
+
+                      <group>
+
+
+                      </group>
+                      <group>
+                          <group string="Vessel Information">
+                              <field name="mother_id"/>
+                              <field name="daughter_id"/>
+                              <field name="date"/>
+                              <field name="revised_date"/>
+                          </group>
+                          <group string="Product Information">
+                              <field name="product_id"/>
+                              <field name="qty_mt"/>
+                              <field name="qty_litre"/>
+                              <field name="discharge_port"/>
+                              <field name="location"/>
+
+                          </group>
+                      </group>
+                      <notebook>
+                          <page string="Clearance Status">
+                              <header>
+                              <field name="navy_clear_status" widget="statusbar" statusbar_visible="active,expired"/>
+                              </header>
+                              <group>
+                                  <group string="Navy Clearance Information">
+                                      <field name="navy_clear"/>
+                                      <field name="navy_clear_validity"/>
+                                      <field name="navy_clear_expiry"/>
+
+                                  </group>
+                                  <group string="Armed Guards Information">
+                                      <field name="armed_clear_apply"/>
+                                      <field name="armed_clear_approve"/>
+                                      <field name="armed_clear_duration"/>
+                                      <field name="armed_clear_expiry"/>
+
+                                  </group>
+                              </group>
+                              <group>
+                                  <group>
+                                      <field name="dpr_clear"/>
+                                  </group>
+                              </group>
+                          </page>
+                          <page string="STS Status">
+                              <group>
+                                  <group string="STS Status">
+                                      <field name="sts_hose_connection"/>
+                                      <field name="sts_start"/>
+                                      <field name="sts_complete"/>
+                                      <field name="sts_hose_disconnection"/>
+                                  </group>
+                                  <group string="Documentation">
+                                      <field name="documentation_start"/>
+                                      <field name="documentation_complete"/>
+                                      <field name="bl_mt"/>
+                                      <field name="bl_litre"/>
+                                  </group>
+                                  <group string="Pre-Sailing Arrangements">
+                                      <field name="bunker_receipt_start"/>
+                                      <field name="bunker_receipt_complete"/>
+                                      <field name="armed_embarkation"/>
+
+                                  </group>
+                              </group>
+
+                          </page>
+                          <page string="Voyage Activity and Status">
+                              <group>
+                                  <group>
+                                      <field name="cast_off"/>
+                                      <field name="arrive_anchor"/>
+                                      <field name="berthing"/>
+                                      <field name="pppra_clear"/>
+                                  </group>
+                              </group>
+
+
+
+                          </page>
+                      </notebook>
+                  </sheet>
+              </form>
+          </field>
+      </record>
+
+
   </data>
 </odoo>
